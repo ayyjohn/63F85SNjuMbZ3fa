@@ -22,7 +22,7 @@ end
 
 def print_arr_2(arr)
   arr.each_with_index do |el, idx|
-    break if idx == arr.length/2 - 1
+    break if idx == arr.length / 2 - 1
     puts el
   end
 end
@@ -33,3 +33,33 @@ end
 # constant factor is 5/2, if, equality, length, division, and subtraction, but also the function
 # will always stop halfway through the array.
 
+def print_arr_3(arr)
+  arr.each do |el|
+    break if el == arr.length / 2 - 1
+    puts el
+  end
+end
+
+# same as the previous function, without the constant factor over 2, because this one varies.
+# in the best case it exits at the first value, and at the worst case it exits at the end,
+# but depending on the array it changes so the big O is linear.
+
+def print_arr_4(arr)
+  arr.each do |el|
+    break if el == arr.length / 2 - 1
+    puts el
+  end
+
+  arr.each_with_index do |el, idx|
+    puts el if idx % 3 == 0
+  end
+
+  puts arr.last
+end
+
+# treat this as the sum of 3 independent things.
+# first, only the first each loop will break
+# if it hits the mark, so it's the same as the previous function
+# for that part. then the next each block will iterate over
+# each item and do everything except print on everything, so another O(n)
+# with a constant factor. Finally the last portion is O(1).
