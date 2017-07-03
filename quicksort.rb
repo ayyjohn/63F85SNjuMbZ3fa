@@ -4,7 +4,6 @@
 
 class Array
   def quicksort
-    p self
     return self if self.length <= 1
     pivot = self[0]
     left = self.drop(1).select { |el| el <= pivot }
@@ -19,7 +18,6 @@ end
 
 class Array
   def quicksort_random
-    p self
     return self if self.length <= 1
     pivot = rand(self.length)
     self[0], self[pivot] = self[pivot], self[0]
@@ -30,7 +28,6 @@ class Array
     left.quicksort_random + [pivot] + right.quicksort_random
   end
 end
-
 
 a = (0..10).to_a
 p a.quicksort
