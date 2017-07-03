@@ -72,3 +72,17 @@ end
 
 # this is a linear search, the time complexity of which is best case
 # the first index, and worst case the last index, so O(n)
+
+def searchity_search(arr, target)
+  results = []
+
+  arr.each do |el|
+    results << search(arr, target + el)
+  end
+
+  results
+end
+
+# this function performs a linear search for a semi random element on the original
+# array n times, so the order is n^2
+
