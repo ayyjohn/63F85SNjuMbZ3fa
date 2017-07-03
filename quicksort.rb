@@ -13,6 +13,9 @@ class Array
   end
 end
 
+a = (0..10).to_a.shuffle
+p a.quicksort
+
 # this method is fine, however with a sorted input will
 # produce a worst case scenario. a better approach is to select a random pivot
 
@@ -30,6 +33,4 @@ class Array
 end
 
 a = (0..10).to_a
-p a.quicksort
-puts ""
 p a.quicksort_random
