@@ -63,3 +63,12 @@ end
 # for that part. then the next each block will iterate over
 # each item and do everything except print on everything, so another O(n)
 # with a constant factor. Finally the last portion is O(1).
+
+def search(arr, target)
+  arr.each_with_index do |el, idx|
+    return idx if el == target
+  end
+end
+
+# this is a linear search, the time complexity of which is best case
+# the first index, and worst case the last index, so O(n)
