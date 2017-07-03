@@ -86,3 +86,14 @@ end
 # this function performs a linear search for a semi random element on the original
 # array n times, so the order is n^2
 
+def searchity_search_2(arr)
+  results = []
+
+  arr.each do |el|
+    results << search(arr, el)
+  end
+end
+
+# if the array has no repeats, which is the "worst case", then it will perform
+# n loops, where each loop takes 1, 2, 3, ..., n - 1, n time.
+# the sum from 1 to n can be reduced to n(n + 1) / 2, which is still n^2
