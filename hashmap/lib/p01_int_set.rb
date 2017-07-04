@@ -22,7 +22,7 @@ class MaxIntSet
   private
 
   def is_valid?(num)
-    num.is_a?(Fixnum) && (0...@max).cover?(num)
+    num.is_a?(Integer) && (0...@max).cover?(num)
   end
 
   def validate!(num)
@@ -37,18 +37,22 @@ class IntSet
   end
 
   def insert(num)
+    self[num] << num
   end
 
   def remove(num)
+    self[num].delete(num)
   end
 
   def include?(num)
+    self[num].include?(num)
   end
 
   private
 
   def [](num)
     # optional but useful; return the bucket corresponding to `num`
+    @store[num % 20]
   end
 
   def num_buckets
@@ -84,5 +88,8 @@ class ResizingIntSet
   end
 
   def resize!
+  end
+
+  def inspect
   end
 end
