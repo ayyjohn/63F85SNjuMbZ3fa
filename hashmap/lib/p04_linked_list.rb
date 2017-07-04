@@ -45,19 +45,15 @@ class LinkedList
 
   def get(key)
     current = @head
-    until current == @tail
+    each do |node|
+      current = node
       return current.val if current.key == key
-      current = current.next
     end
     nil
   end
 
   def include?(key)
-    current = @head
-    until current == @tail
-      current = current.next
-      return true if current.key == key
-    end
+    each { |node| return true if node.key == key }
     false
   end
 
@@ -71,26 +67,26 @@ class LinkedList
 
   def update(key, val)
     current = @head
-    until current.key == key || current == @tail
-      current = current.next
+    each do |node|
+      current = node
+      break if current.key == key
     end
-    current.val = val
+    current.val = val unless current == @head
   end
 
   def remove(key)
     current = @head
-    until current.key == key
-      current = current.next
+    each do |node|
+      current = node
+      break if current.key == key
     end
     current.prev.next = current.next
     current.next.prev = current.prev
   end
 
   def inspect
-    current = @head
-    until current == @tail
-      p [current.key, current.val]
-      current = current.next
+    each do |node|
+      p [node.key, node.val]
     end
     puts ""
   end
