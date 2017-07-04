@@ -21,7 +21,7 @@
 # ensures that the heap stays valid, and
 # pop which removes the min/max element and ensures that the heap stays valid
 
-# heap sort constitutes first in place turning the array into a heap, ie
+# heap sort constitutes first in place turning the array into a heap, IE
 # iterating over the array, and inserting each element into a heap that holds
 # the first n - 1 items, then finally iterating over the heap and popping off
 # each value of the heap. If done with a max heap this results in a sorted array
