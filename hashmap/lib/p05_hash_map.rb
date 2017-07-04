@@ -43,7 +43,7 @@ class HashMap
 
   def to_s
     pairs = inject([]) do |strs, (k, v)|
-      strs << "#{k.to_s} => #{v.to_s}"
+      strs << "#{k} => #{v}"
     end
     "{\n" + pairs.join(",\n") + "\n}"
   end
