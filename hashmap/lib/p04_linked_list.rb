@@ -19,6 +19,9 @@ class Node
 end
 
 class LinkedList
+
+  include Enumerable
+
   def initialize
     @head = Node.new
     @tail = Node.new
@@ -58,11 +61,11 @@ class LinkedList
   end
 
   def append(key, val)
-    new = Node.new(key, val)
-    @tail.prev.next = new
-    new.prev = @tail.prev
-    @tail.prev = new
-    new.next = @tail
+    new_node = Node.new(key, val)
+    @tail.prev.next = new_node
+    new_node.prev = @tail.prev
+    @tail.prev = new_node
+    new_node.next = @tail
   end
 
   def update(key, val)
@@ -99,8 +102,7 @@ class LinkedList
     end
   end
 
-  # uncomment when you have `each` working and `Enumerable` included
-  # def to_s
-  #   inject([]) { |acc, node| acc << "[#{node.key}, #{node.val}]" }.join(", ")
-  # end
+  def to_s
+    inject([]) { |acc, node| acc << "[#{node.key}, #{node.val}]" }.join(", ")
+  end
 end
