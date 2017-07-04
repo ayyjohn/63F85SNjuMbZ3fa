@@ -37,3 +37,18 @@ def rotate_matrix(matrix)
     end
   end
 end
+
+##### just for kicks, there's a non-in-place version that's easier ####
+
+def make_rotated(matrix)
+  matrix_size = matrix.length - 1
+  new_matrix = Array.new(matrix.length) { Array.new }
+  (0..matrix_size).each do |row|
+    (0..matrix_size).each do |col|
+      new_matrix[col] << matrix[row][col]
+    end
+  end
+  new_matrix
+end
+
+p make_rotated([[1, 2, 3, 4, 5], [6, 7, 8, 9, 0], [1, 2, 3, 4, 5], [6, 7, 8, 9, 0], [1, 2, 3, 4, 5]])
