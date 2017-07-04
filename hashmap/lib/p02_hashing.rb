@@ -6,7 +6,7 @@ class Array
   def hash
     total = 0
     self.each_with_index do |el, idx|
-      total += el ^ idx
+      total += el.hash ^ idx
     end
     total.hash
   end
