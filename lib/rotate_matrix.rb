@@ -22,3 +22,18 @@ def rotate_matrix(matrix)
     end
   end
 end
+
+def rotate_matrix(matrix)
+  matrix_size = matrix.length - 1
+  (0...matrix.length / 2).each do |row|
+    (row...matrix_size - row).each do |col|
+      matrix[row][col],
+      matrix[~col][row],
+      matrix[~row][~col],
+      matrix[col][~row] = matrix[~col][row],
+                          matrix[~row][~col],
+                          matrix[col][~row],
+                          matrix[row][col]
+    end
+  end
+end
