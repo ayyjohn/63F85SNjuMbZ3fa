@@ -13,8 +13,9 @@ class Node
   end
 
   def remove
-    # optional but useful, connects previous node to next node
-    # and removes self from list.
+    @next.prev = @prev
+    @prev.next = @next
+    self
   end
 end
 
@@ -85,8 +86,25 @@ class LinkedList
       current = node
       break if current.key == key
     end
-    current.prev.next = current.next
-    current.next.prev = current.prev
+    current.remove
+    current
+  end
+
+  def pop
+    last.remove
+  end
+
+  def shift
+    first.remove
+  end
+
+  def unshift(key, val)
+    new_node = Node.new(key, val)
+    first.prev = new_node
+    new_node.next = first
+    @head.next = new_node
+    new_node.prev = @head
+    new_node
   end
 
   def inspect
