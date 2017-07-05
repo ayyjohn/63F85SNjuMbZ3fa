@@ -37,9 +37,6 @@ class Node
     "Node(data: #{@data}, left:#{@left}, right:#{@right})"
   end
 
-  def to_s
-    @data
-  end
 end
 
 a = Node.new(data: 3)
