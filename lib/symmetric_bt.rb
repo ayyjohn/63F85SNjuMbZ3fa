@@ -47,4 +47,19 @@ e = Node.new(data: 2, right: c)
 f = Node.new(data: 2, left: d)
 g = Node.new(data: 0, left: e, right: f)
 
-p symmetric?(g)
+def is_symmetric?(tree)
+
+  def check_symmetric(subtree_0, subtree_1)
+    return true unless subtree_0 || subtree_1
+    if subtree_0 && subtree_1
+      return (subtree_0.data == subtree_1.data &&
+        check_symmetric(subtree_0.left, subtree_1.right) &&
+        check_symmetric(subtree_0.right, subtree_1.left))
+    end
+    false
+  end
+
+  !tree || check_symmetric(tree.left, tree.right)
+end
+
+p is_symmetric?(g)
